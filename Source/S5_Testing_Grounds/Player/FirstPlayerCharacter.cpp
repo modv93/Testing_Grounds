@@ -3,6 +3,7 @@
 #include "FirstPlayerCharacter.h"
 #include "Engine/Classes/Components/SkeletalMeshComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
 #include "GameFramework/InputSettings.h"
@@ -111,6 +112,12 @@ void AFirstPlayerCharacter::BeginPlay()
 	}
 	Gun = GetWorld()->SpawnActor<AGun>(GunBlueprint);
 	Gun->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
+	Gun->AnimInstance = Mesh1P->GetAnimInstance();
+	// Bind fire event
+	if (EnableTouchscreenMovement(InputComponent) == false)
+	{
+		InputComponent->BindAction("Fire", IE_Pressed, Gun, &AGun::OnFire);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -125,8 +132,7 @@ void AFirstPlayerCharacter::SetupPlayerInputComponent(class UInputComponent* Pla
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
-	// Bind fire event
-	//PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFirstPlayerCharacter::OnFire);
+
 
 	// Enable touchscreen input
 	EnableTouchscreenMovement(PlayerInputComponent);

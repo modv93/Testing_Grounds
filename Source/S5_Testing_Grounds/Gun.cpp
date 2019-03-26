@@ -58,6 +58,7 @@ void AGun::OnFire()
 
 				// spawn the projectile at the muzzle
 				World->SpawnActor<ABallProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
+				UE_LOG(LogTemp, Warning, TEXT("Shoot"));
 			}
 		}
 	}

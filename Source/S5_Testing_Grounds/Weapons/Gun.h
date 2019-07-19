@@ -38,9 +38,10 @@ protected:
 public:	
 
 	/** Fires a projectile. */
+	UFUNCTION(BlueprintCallable, Category = "Firing")
 	void OnFire();
 
-	/** Gun muzzle's offset from the characters location */
+	/** Gun muzzle's offset from the characters location new n*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	FVector GunOffset;
 

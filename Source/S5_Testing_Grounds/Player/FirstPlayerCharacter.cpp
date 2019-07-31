@@ -239,7 +239,7 @@ void AFirstPlayerCharacter::EndTouch(const ETouchIndex::Type FingerIndex, const 
 
 //Commenting this section out to be consistent with FPS BP template.
 //This allows the user to turn without using the right virtual joystick
-
+ 
 //void AFirstPlayerCharacter::TouchUpdate(const ETouchIndex::Type FingerIndex, const FVector Location)
 //{
 //	if ((TouchItem.bIsPressed == true) && (TouchItem.FingerIndex == FingerIndex))
